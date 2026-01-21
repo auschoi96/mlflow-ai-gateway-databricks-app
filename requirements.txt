@@ -1,0 +1,11 @@
+# MLflow AI Gateway Dependencies (MLflow 3.9+)
+#
+# The AI Gateway is built into MLflow Tracking Server.
+# Use mlflow[genai] for full gateway functionality with LiteLLM.
+
+mlflow[genai]==3.9.0rc0
+# git+https://github.com/mlflow/mlflow.git@master
+
+# Provider-specific dependencies (uncomment as needed)
+# For AWS Bedrock
+# boto3>=1.28.0

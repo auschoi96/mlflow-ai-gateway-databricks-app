@@ -1,0 +1,8 @@
+[project]
+name = "mlflow-gateway-databricks-app"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "notebook>=7.5.2",
+]

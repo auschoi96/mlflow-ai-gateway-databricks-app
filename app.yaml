@@ -1,0 +1,60 @@
+# Databricks Apps Configuration for MLflow AI Gateway (MLflow 3.9+)
+#
+# This deploys the full MLflow Tracking Server with integrated AI Gateway.
+# The AI Gateway is managed via the web UI - no YAML configuration needed.
+#
+# After deployment:
+# 1. Navigate to your app URL /#/gateway
+# 2. Create API Keys (API Keys tab)
+# 3. Create Endpoints (Endpoints tab)
+# 4. Query your endpoints via the API
+#
+# Deployment:
+#   databricks apps deploy mlflow-ai-gateway --source-code-path .
+
+command:
+  - "python"
+  - "app.py"
+
+env:
+  # Server configuration
+  - name: HOST
+    value: "0.0.0.0"
+  - name: PORT
+    value: "8000"
+
+  # MLflow backend store - SQLite is fine for single-instance deployments
+  # For production, use PostgreSQL:
+  # - name: MLFLOW_BACKEND_STORE_URI
+  #   value: "postgresql://user:password@host:5432/mlflow"
+
+  # Number of workers (optional)
+  # - name: MLFLOW_WORKERS
+  #   value: "2"
+
+# =============================================================================
+# Databricks Resources - Grant app access to Databricks services
+# =============================================================================
+# These resources allow the app's service principal to access Databricks
+# services without needing to manage API keys manually.
+#
+# Add the serving endpoints you want the gateway to access:
+databricks_resources:
+  # Model Serving Endpoints - add each endpoint you want to access
+  - name: claude_endpoint
+    serving_endpoint: databricks-claude-opus-4-5
+
+  # Add more endpoints as needed:
+  # - name: llama_endpoint
+  #   serving_endpoint: databricks-meta-llama-3-3-70b-instruct
+  # - name: embeddings_endpoint
+  #   serving_endpoint: databricks-bge-large-en
+
+# Compute resources
+resources:
+  requests:
+    cpu: "1"
+    memory: "2Gi"
+  limits:
+    cpu: "2"
+    memory: "4Gi"

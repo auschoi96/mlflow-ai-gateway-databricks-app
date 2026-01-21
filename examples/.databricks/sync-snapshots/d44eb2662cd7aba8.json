@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "host": "https://e2-demo-field-eng.cloud.databricks.com",
+  "remote_path": "/Workspace/Users/austin.choi@databricks.com/mlflow-ai-gateway",
+  "last_modified_times": {
+    "databricks_notebook_example.py": "2026-01-20T19:03:58.896931199-08:00",
+    "test_gateway.py": "2026-01-20T19:03:32.672897904-08:00"
+  },
+  "local_to_remote_names": {
+    "databricks_notebook_example.py": "databricks_notebook_example",
+    "test_gateway.py": "test_gateway.py"
+  },
+  "remote_to_local_names": {
+    "databricks_notebook_example": "databricks_notebook_example.py",
+    "test_gateway.py": "test_gateway.py"
+  }
+}
