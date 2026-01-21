@@ -35,15 +35,23 @@ databricks apps deploy mlflow-ai-gateway --source-code-path .
    - Name it (e.g., `my-chat`)
    - Select provider and model
    - Choose your API key
+  
+### 3. Generate an OAuth Token 
 
-### 3. Query Your Endpoint
+Databricks Apps needs an OAuth Token. Use the Databricks CLI to generate one: 
+
+  ```bash
+   databricks auth token --profile <your profile name>
+   ```
+
+### 4. Query Your Endpoint
 
 ```python
 from openai import OpenAI
 
 client = OpenAI(
     base_url="https://your-app.databricks.com/gateway/mlflow/v1",
-    api_key=""  # Not needed - configured server-side
+    api_key="your token from step 3"
 )
 
 response = client.chat.completions.create(
